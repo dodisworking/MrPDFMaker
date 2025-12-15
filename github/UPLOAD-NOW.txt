@@ -1,0 +1,23 @@
+═══════════════════════════════════════════════════════════════
+  EASIEST WAY: Upload via GitHub Website
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Go to your repository
+   https://github.com/dodisworking/MrPDFMaker
+
+STEP 2: Click "Add file" → "Upload files"
+
+STEP 3: Drag ALL files from the "github" folder:
+   - Drag the entire "public" folder
+   - Drag server.js
+   - Drag package.json
+   - Drag .gitignore
+   - Drag .env.example
+   - Drag all .md files
+
+STEP 4: Scroll down, click "Commit changes"
+
+DONE! ✅
+
+═══════════════════════════════════════════════════════════════
+
