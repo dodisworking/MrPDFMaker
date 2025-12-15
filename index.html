@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrPDF - File to PDF Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="background-splash" id="backgroundSplash">
+        <img src="background.png" alt="Background" class="background-image">
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h3>Settings</h3>
+            <button class="close-settings" id="closeSettings">&times;</button>
+        </div>
+        <div class="settings-content">
+            <div class="setting-item">
+                <label for="gifScale">GIF Scale:</label>
+                <input type="range" id="gifScale" min="0.5" max="3" step="0.05" value="1.71">
+                <span class="setting-value" id="gifScaleValue">1.71</span>
+            </div>
+            <div class="setting-item">
+                <label for="gifPosition">GIF Vertical Position:</label>
+                <input type="range" id="gifPosition" min="-50" max="50" step="1" value="0">
+                <span class="setting-value" id="gifPositionValue">0px</span>
+            </div>
+            <div class="settings-display">
+                <h4>Current Values:</h4>
+                <div class="value-display">
+                    <p>Scale: <strong id="displayScale">1.71</strong></p>
+                    <p>Position: <strong id="displayPosition">0px</strong></p>
+                </div>
+                <button class="copy-values" id="copyValues">Copy Values</button>
+            </div>
+        </div>
+    </div>
+    <button class="settings-toggle" id="settingsToggle">⚙️</button>
+
+    <div class="container fade-in" id="mainContainer">
+        <header>
+            <h1>Welcome</h1>
+            <p class="subtitle" id="introText">Mr. PDF Maker is here to help you</p>
+        </header>
+
+        <main>
+            <div class="upload-area" id="uploadArea">
+                <img src="MrPDF.gif" alt="MrPDF" class="mrpdf-gif" id="mrpdfGif">
+                <input type="file" id="fileInput" accept="image/*,.html,.htm,.txt,.md,.pdf" hidden>
+            </div>
+
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">Converting...</p>
+            </div>
+
+            <div class="result-container" id="resultContainer" style="display: none;">
+                <div class="success-message">
+                    <img src="h.gif" alt="Success" class="success-gif">
+                    <h2>Conversion Successful!</h2>
+                    <a href="#" id="downloadLink" class="download-btn" download>Download PDF</a>
+                    <button id="convertAnotherBtn" class="convert-another-btn" onclick="resetForm()">Convert Another File</button>
+                </div>
+            </div>
+
+            <div class="error-container" id="errorContainer" style="display: none;">
+                <div class="error-message">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <h2>Conversion Failed</h2>
+                    <p id="errorMessage"></p>
+                    <button class="retry-btn" onclick="resetForm()">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p class="footer-text">Click on him to give him a file to convert</p>
+        </footer>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal" style="display: none;">
+        <div class="payment-modal-content">
+            <div class="payment-modal-header">
+                <h2>Complete Payment</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="payment-modal-body">
+                <p>Pay $1.00 to convert your file</p>
+                <form id="payment-form">
+                    <div id="payment-element">
+                        <!-- Stripe Elements will create form elements here -->
+                    </div>
+                    <button type="submit" id="submit-payment" class="pay-btn">
+                        Pay $1.00
+                    </button>
+                    <div id="payment-message" class="payment-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
